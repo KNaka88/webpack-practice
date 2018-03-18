@@ -5,6 +5,14 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'build'),  // output path: you need to write absolute path with a help of path
     filename: 'bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        use: 'babel-loader',
+        test: /\.js$/,
+      }
+    ]
   }
 };
 
