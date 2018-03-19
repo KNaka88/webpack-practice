@@ -5,7 +5,8 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),  // output path: you need to write absolute path with a help of path
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: 'build/' //specify path where you want to put the assets
   },
   module: {
     rules: [
@@ -20,6 +21,16 @@ const config = {
           loader: 'css-loader'
         }),
         test: /\.css$/,
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: { limit: 40000 }
+          },
+          'image-webpack-loader'
+        ]
       }
     ]
   },
